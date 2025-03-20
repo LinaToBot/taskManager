@@ -114,6 +114,34 @@ export const changeTaskStatus = createAsyncThunk(
   }
 );
 
+export const updateTask = createAsyncThunk(
+  "tasks/updateTask",
+  async ({ id, title }: { id: string; title: string }, { dispatch }) => {
+    const token = localStorage.getItem("authToken");
+
+    return fetch(`${API_URL}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ title }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error al actualizar tarea");
+        }
+        return response.json();
+      })
+      .then(() => {
+        dispatch(fetchTasks());
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+);
+
 export const deleteTaskById = createAsyncThunk(
   "tasks/deleteTask",
   async (id: string, { dispatch, rejectWithValue }) => {

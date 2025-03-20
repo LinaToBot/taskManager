@@ -37,14 +37,21 @@ const taskController = {
 
   updateTask: async (req, res) => {
     try {
-      const task = await Task.findByIdAndUpdate(
+      const { title } = req.body;
+
+      const task = await Task.findOneAndUpdate(
         { _id: req.params.id, user: req.user.userId },
-        req.body,
+        { title },
         { new: true }
       );
+
       if (!task) return res.status(404).json({ message: "Task not found" });
 
-      res.json({ id: task._id.toString(), ...task._doc });
+      res.json({
+        id: task._id.toString(),
+        title: task.title,
+        status: task.status,
+      });
     } catch (err) {
       res.status(400).json({ message: err.message });
     }
