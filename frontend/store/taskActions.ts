@@ -11,12 +11,14 @@ const getAuthToken = () =>
 // 🔹 Obtener tareas
 export const fetchTasks = createAsyncThunk(
   "tasks/fetchTasks",
-  async (_, { dispatch, rejectWithValue }) => {
+  async (status: string | undefined, { dispatch, rejectWithValue }) => {
     try {
       console.log("📡 Fetching tasks from:", API_URL);
 
+      const url = status ? `${API_URL}?status=${status}` : API_URL;
+
       const token = getAuthToken();
-      const response = await fetch(API_URL, {
+      const response = await fetch(url, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +41,7 @@ export const fetchTasks = createAsyncThunk(
 
       dispatch(setTasks(data));
       return data;
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("❌ Error al obtener tareas:", error);
       return rejectWithValue(
         error instanceof Error

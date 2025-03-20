@@ -7,17 +7,27 @@ import { fetchTasks } from "@/store/taskActions";
 import { Task } from "@/utils/types";
 import TaskItem from "@/components/TaskItem";
 
-const TaskList = () => {
+interface TaskListProps {
+  filterStatus?: string;
+}
+
+const TaskList: React.FC<TaskListProps> = ({ filterStatus }) => {
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
+    if (filterStatus !== undefined) {
+      dispatch(fetchTasks(filterStatus));
+    }
+  }, [dispatch, filterStatus]);
+
+  const filteredTasks = filterStatus
+    ? tasks.filter((task: Task) => task.status === filterStatus)
+    : tasks;
 
   return (
     <div className="mt-4">
-      {tasks.map((task: Task) => (
+      {filteredTasks.map((task: Task) => (
         <TaskItem key={task.id} task={task} />
       ))}
     </div>
