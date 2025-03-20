@@ -30,13 +30,12 @@ const Login = () => {
 
     if (response.ok) {
       setAuthToken(data.token);
-      router.push("/");
+      router.push("/dashboard");
     } else {
       setError(data.message || "Error al iniciar sesión");
     }
   };
 
-  // Lógica para registrar un nuevo usuario
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -52,7 +51,7 @@ const Login = () => {
 
     if (response.ok) {
       setAuthToken(data.token);
-      router.push("/");
+      router.push("/dashboard");
     } else {
       setError(data.message || "Error al registrar el usuario");
     }
@@ -61,7 +60,6 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-black text-white">
       <div className="flex flex-col items-center space-y-4 p-6 bg-white text-black shadow-lg rounded-md">
-        {/* Vista inicial con botones */}
         {view === "default" && (
           <>
             <h1 className="text-xl font-bold mb-4">Elija una opción</h1>
@@ -80,7 +78,6 @@ const Login = () => {
           </>
         )}
 
-        {/* Formulario de registro */}
         {view === "register" && (
           <form onSubmit={handleRegister} className="space-y-4 w-64">
             <h1 className="text-xl font-bold mb-4">Registrarse</h1>
@@ -124,7 +121,6 @@ const Login = () => {
           </form>
         )}
 
-        {/* Formulario de inicio de sesión */}
         {view === "login" && (
           <form onSubmit={handleLogin} className="space-y-4 w-64">
             <h1 className="text-xl font-bold mb-4">Iniciar sesión</h1>
