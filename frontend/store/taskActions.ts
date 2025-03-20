@@ -4,11 +4,9 @@ import { setTasks, addTask, updateTaskStatus, removeTask } from "./taskSlice";
 const API_URL =
   process.env.NEXT_PUBLIC_URL_TASK || "http://localhost:5000/api/tasks";
 
-// ✅ Función para obtener el token de `localStorage` sin causar errores en SSR
 const getAuthToken = () =>
   typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
 
-// 🔹 Obtener tareas
 export const fetchTasks = createAsyncThunk(
   "tasks/fetchTasks",
   async (status: string | undefined, { dispatch, rejectWithValue }) => {
@@ -50,7 +48,6 @@ export const fetchTasks = createAsyncThunk(
   }
 );
 
-// 🔹 Crear una nueva tarea
 export const createNewTask = createAsyncThunk(
   "tasks/createTask",
   async (title: string, { dispatch, rejectWithValue }) => {
@@ -83,7 +80,6 @@ export const createNewTask = createAsyncThunk(
   }
 );
 
-// 🔹 Cambiar estado de una tarea
 export const changeTaskStatus = createAsyncThunk(
   "tasks/updateTask",
   async (
@@ -118,7 +114,6 @@ export const changeTaskStatus = createAsyncThunk(
   }
 );
 
-// 🔹 Eliminar tarea
 export const deleteTaskById = createAsyncThunk(
   "tasks/deleteTask",
   async (id: string, { dispatch, rejectWithValue }) => {

@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { fetchTasks } from "@/store/taskActions";
 
 interface TaskSearchProps {
   setFilterStatus: (status: string | undefined) => void;
