@@ -13,8 +13,6 @@ export const fetchTasks = createAsyncThunk(
   "tasks/fetchTasks",
   async (status: string | undefined, { dispatch, rejectWithValue }) => {
     try {
-      console.log("📡 Fetching tasks from:", API_URL);
-
       const url = status ? `${API_URL}?status=${status}` : API_URL;
 
       const token = getAuthToken();
