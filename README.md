@@ -2,6 +2,12 @@
 
 Este es un proyecto de gestión de tareas que permite a los usuarios crear, ver, actualizar y eliminar tareas.
 
+Cada usuario podrá crear su sesión donde puede ver todas sus tareas. Si desea cerrar la sesión puede hacerlo y su tareas se guardan.
+
+También el usuario puede identificar las tareas pendientes, ya que, están señaladas con un circulo amarillo.
+
+Y para marcarlas como completadas puedes dar click en el mismo circulo y cambia a verde, lo que indica que se ha completado.
+
 ## Requisitos
 
 - Node.js: v18.18.0
@@ -13,7 +19,7 @@ Este es un proyecto de gestión de tareas que permite a los usuarios crear, ver,
 
 ```bash
 git clone https://github.com/LinaToBot/taskManager.git
-cd SPA
+cd
 ```
 
 ## Backend
