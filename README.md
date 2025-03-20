@@ -50,3 +50,18 @@ npm install
 ```bash
 npm run dev
 ```
+
+**Si tienes problemas en acceder a la app**
+Dirígete a tu terminal y si puedes leer esto:
+
+```bash
+> frontend@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.2.3 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://172.23.64.1:3000
+   - Environments: .env.local
+```
+
+Usar (ctrl + click) sobre los links: http://localhost:3000 o http://172.23.64.1:3000
