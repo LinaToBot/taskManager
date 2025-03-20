@@ -13,11 +13,12 @@ Este es un proyecto de gestión de tareas que permite a los usuarios crear, ver,
 
 ```bash
 git clone https://github.com/LinaToBot/taskManager.git
+cd SPA
 ```
 
 ## Backend
 
-El backend está desarrollado con **Node.js** y **Express**, y utiliza **MongoDB** como base de datos.
+El backend está desarrollado con **Node.js** y **Express**, para la base de datos utilice **MongoDB** y para la autenticación **JSON Web Tokens (JWT)**.
 
 **Instalar dependencias del Backend**:
 
@@ -35,7 +36,7 @@ npm run dev
 
 ## Frontend
 
-El Frontend está desarrollado con **Next.js** y **React.js**.
+El Frontend está desarrollado con **Next.js**, **React.js** y **Tailwind CSS**.
 
 **Instalar dependencias del Frontend**:
 
@@ -65,3 +66,8 @@ Dirígete a tu terminal y si puedes leer esto:
 ```
 
 Usar (ctrl + click) sobre los links: http://localhost:3000 o http://172.23.64.1:3000
+
+## Adicional
+
+Si deseas ver el devIndicators de Next ve al archivo next.config.ts
+y agrega undefined en lugar de false
