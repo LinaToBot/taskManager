@@ -10,7 +10,7 @@ const taskSchema = new mongoose.Schema(
       default: "pending",
     },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    subtask: [{ type: mongoose.Schema.Types.ObjectId, ref: "Task" }],
+    subtasks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Task" }],
     comments: [{ type: String }],
   },
   { timestamps: true }
