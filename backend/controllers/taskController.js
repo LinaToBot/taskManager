@@ -3,12 +3,14 @@ import Task from "../models/Task.js";
 const taskController = {
   getTasks: async (req, res) => {
     try {
-      const tasks = await Task.find();
+      const tasks = await Task.find({ user: req.user.userId });
 
       const transformedTasks = tasks.map((task) => ({
         id: task._id.toString(),
         title: task.title,
         status: task.status,
+        subtask: task.subtask,
+        comments: task.comments,
       }));
 
       res.json(transformedTasks);
@@ -22,6 +24,7 @@ const taskController = {
       title: req.body.title,
       description: req.body.description,
       status: "pending",
+      user: req.user.userId,
     });
 
     try {
@@ -34,9 +37,11 @@ const taskController = {
 
   updateTask: async (req, res) => {
     try {
-      const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-      });
+      const task = await Task.findByIdAndUpdate(
+        { _id: req.params.id, user: req.user.userId },
+        req.body,
+        { new: true }
+      );
       if (!task) return res.status(404).json({ message: "Task not found" });
 
       res.json({ id: task._id.toString(), ...task._doc });
@@ -47,7 +52,10 @@ const taskController = {
 
   deleteTask: async (req, res) => {
     try {
-      const task = await Task.findByIdAndDelete(req.params.id);
+      const task = await Task.findByIdAndDelete({
+        _id: req.params.id,
+        user: req.user.userId,
+      });
       if (!task) return res.status(404).json({ message: "Task not found" });
 
       res.json({ message: "Task deleted" });
