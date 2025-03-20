@@ -13,10 +13,12 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <div className="flex justify-between p-2 border">
-      <span>{task.title}</span>
-      <div>
-        {/* Botón para cambiar el estado de la tarea */}
+    <div className="flex flex-col sm:flex-row justify-between items-center p-4 border rounded-lg shadow-md bg-white dark:bg-gray-800">
+      <span className="text-lg font-semibold text-gray-800 dark:text-white text-center sm:text-left">
+        {task.title}
+      </span>
+
+      <div className="flex gap-2 mt-2 sm:mt-0">
         <button
           onClick={() =>
             dispatch(
@@ -26,12 +28,21 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
               })
             )
           }
+          className={`p-2 rounded-lg ${
+            task.status === "pending"
+              ? "bg-yellow-500 hover:bg-yellow-600"
+              : "bg-green-200 hover:bg-green-300"
+          } text-white transition duration-200`}
         >
-          {task.status === "pending" ? "✔️" : "❌"}
+          {task.status === "pending" ? "⚪" : "🟢"}
         </button>
 
-        {/* Botón para eliminar la tarea */}
-        <button onClick={() => dispatch(deleteTaskById(task.id))}>🗑️</button>
+        <button
+          onClick={() => dispatch(deleteTaskById(task.id))}
+          className="p-2 bg-gray-500 hover:bg-gray-700 text-white rounded-lg transition duration-200"
+        >
+          🗑️
+        </button>
       </div>
     </div>
   );
