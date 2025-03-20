@@ -27,11 +27,11 @@ const TaskForm = () => {
         placeholder="Nueva tarea..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="border p-2 flex-1 sm:text-base w-full sm:w-auto"
+        className="bg-gray-800 border p-2 flex-1 sm:text-base w-full sm:w-auto"
       />
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 sm:w-auto"
+        className="bg-purple-500 hover:bg-purple-700 text-white px-4 py-2 sm:w-auto"
       >
         Agregar
       </button>

@@ -18,22 +18,22 @@ const TaskFilter: React.FC<TaskSearchProps> = ({ setFilterStatus }) => {
   };
 
   return (
-    <div className="mb-4 flex flex-col sm:flex-row justify-center  sm:items-center gap-2  w-full">
+    <div className="mb-4 flex flex-col sm:flex-row justify-center sm:items-center sm:space-x-10 sm:gap-0 gap-2 w-full">
       <label className="text-[1.8rem] sm:text-[1.5rem] font-semibold whitespace-nowrap">
         Filtrar por estado:
       </label>
       <select
         value={status}
         onChange={handleFilterChange}
-        className="border p-2 rounded w-full sm:w-auto text-sm sm:text-base bg-black text-white"
+        className="border p-2 rounded w-full sm:w-auto text-sm sm:text-base bg-gray-800 text-white"
       >
-        <option value="" className="bg-black text-white">
+        <option value="" className="bg-gray-800 text-white">
           Todos
         </option>
-        <option value="pending" className="bg-black text-white">
+        <option value="pending" className="bg-gray-800 text-white">
           Pendiente
         </option>
-        <option value="completed" className="bg-black text-white ">
+        <option value="completed" className="bg-gray-800 text-white ">
           Completada
         </option>
       </select>

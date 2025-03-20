@@ -13,8 +13,8 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-center p-4 border rounded-lg shadow-md bg-white dark:bg-gray-800">
-      <span className="text-lg font-semibold text-gray-800 dark:text-white text-center sm:text-left">
+    <div className="flex flex-col sm:flex-row justify-between items-center p-4 border rounded-lg shadow-md bg-gray-800 w-full max-w-sm">
+      <span className="text-lg font-semibold text-gray-800 dark:text-white text-center sm:text-left break-words break-all pr-4">
         {task.title}
       </span>
 
