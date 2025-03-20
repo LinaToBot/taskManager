@@ -10,8 +10,11 @@ Y para marcarlas como completadas puedes dar click en el mismo circulo y cambia 
 
 ## Requisitos
 
+Para poder usar está aplicación se necesita:
+
 - Node.js: v18.18.0
 - npm: 9.8.1
+- navegador Chrome (se sugiere esta opción para una mejor compatibilidad y experiencia de usuario )
 
 ### Instalación de dependencias del Backend
 
@@ -19,12 +22,17 @@ Y para marcarlas como completadas puedes dar click en el mismo circulo y cambia 
 
 ```bash
 git clone https://github.com/LinaToBot/taskManager.git
-cd
+```
+
+```bash
+cd SPA
 ```
 
 ## Backend
 
 El backend está desarrollado con **Node.js** y **Express**, para la base de datos utilice **MongoDB** y para la autenticación **JSON Web Tokens (JWT)**.
+
+Y este estará corriendo en: http://localhost:5000/api/tasks o http://172.23.64.1:5000/api/tasks
 
 **Instalar dependencias del Backend**:
 
