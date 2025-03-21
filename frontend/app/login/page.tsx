@@ -55,7 +55,7 @@ const Login = () => {
 
     const data = await response.json();
 
-    if (response.ok) {
+    if (response.ok && data.token) {
       setAuthToken(data.token);
       router.push("/dashboard");
     } else {

@@ -13,9 +13,21 @@ const userController = {
 
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = new User({ name, email, password: hashedPassword });
-
       await newUser.save();
-      res.status(201).json({ message: "Usuario registrado correctamente" });
+
+      const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
+        expiresIn: "1d",
+      });
+
+      res.status(201).json({
+        token,
+        user: {
+          id: newUser._id,
+          name: newUser.name,
+          email: newUser.email,
+        },
+        message: "Usuario registrado correctamente",
+      });
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
